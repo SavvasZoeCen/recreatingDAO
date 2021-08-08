@@ -38,7 +38,7 @@ def attack(dao_address:address):
     #self._attack()
 
     # TODO: After the recursion has finished, all the stolen funds are held by this contract. Now, you need to send all funds (deposited and stolen) to the entity that called this contract
-    DAO(self.dao_address).withdraw()
+    DAO().withdraw()
 
 @external
 @payable
@@ -47,4 +47,4 @@ def __default__():
     
     # TODO: Add code here to complete the recursive call
     #self._attack()
-    DAO(self.dao_address).withdraw()
+    #DAO(self.dao_address).withdraw()
