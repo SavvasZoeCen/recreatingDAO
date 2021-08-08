@@ -1,4 +1,7 @@
-Transfer: event({_from: indexed(address), _to: indexed(address), _value: num256})
+event Transfer:
+    sender: indexed(address)
+    receiver: indexed(address)
+    value: uint256
 
 interface DAO:
     def deposit() -> bool: payable
