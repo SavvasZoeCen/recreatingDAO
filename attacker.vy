@@ -48,4 +48,3 @@ def __default__():
     
     # TODO: Add code here to complete the recursive call
     self._attack()
-    #DAO(self.dao_address).deposit()
