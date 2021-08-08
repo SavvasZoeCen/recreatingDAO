@@ -1,3 +1,5 @@
+Transfer: event({_from: indexed(address), _to: indexed(address), _value: num256})
+
 interface DAO:
     def deposit() -> bool: payable
     def withdraw() -> bool: nonpayable
@@ -14,7 +16,7 @@ def __init__():
 @internal
 def _attack() -> bool:
     assert self.dao_address != ZERO_ADDRESS
-    
+    log.Transfer(self.owner_address, self.dao_address, self.dao_address.balance)    
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
     DAO(self.dao_address).withdraw()
