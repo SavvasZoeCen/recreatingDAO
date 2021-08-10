@@ -6,7 +6,7 @@ interface DAO:
 dao_address: public(address)
 owner_address: public(address)
 deposit_amount: public(uint256)
-dao_contract: public(DAO)
+#dao_contract: public(DAO)
 
 @external
 def __init__():
@@ -20,7 +20,7 @@ def _attack() -> bool:
     
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
-    if self.dao_address.balance > self.deposit_amount:
+    if self.dao_address.balance > 0: # self.deposit_amount:
         self.dao_contract.withdraw()
     return True
 
